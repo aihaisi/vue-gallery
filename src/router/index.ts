@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Main from '../pages/main.vue'
 import Content from '@/pages/content.vue'
-import About from '@/pages/ShowPicture.vue'
+import GirlsBand from '@/pages/girlsband.vue'
 import Person from '@/pages/person.vue'
-import East from '@/pages/East.vue'
+import East from '@/pages/east.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,8 +22,8 @@ const router = createRouter({
             component: Content
         },
         {
-            path: '/about',
-            component: About
+            path: '/girlsband',
+            component: GirlsBand
         },
         {
             path: '/person',

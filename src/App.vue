@@ -4,6 +4,9 @@ import Person from './components/Navigation.vue';
 import Dog from './components/Dog.vue';
 import TheWelcome from './components/TheWelcome.vue'
 import Navigation from './components/Navigation.vue';
+import { onMounted } from 'vue';
+import { ref } from 'vue';
+
 </script>
 
 <template>

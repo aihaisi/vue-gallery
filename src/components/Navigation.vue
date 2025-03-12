@@ -3,29 +3,38 @@
         <RouterLink to="/main" active-class="link-active">主要</RouterLink>
         <RouterLink to="/person" active-class="link-active">个人</RouterLink>
         <RouterLink to="/content" active-class="link-active">讨论</RouterLink>
-        <RouterLink to="/about" active-class="link-active">关于</RouterLink>
+        <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
     </div>
 </template>
 
 <script setup lang="ts" name="Person">
 import { RouterLink, useRouter } from 'vue-router';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted ,watch } from 'vue';
 
 const router = useRouter();
+var navigation: Element;
+
+function scroll() {
+    if (window.scrollY > 0) {
+        navigation.classList.add('navigation-scrolled');
+    } else {
+        navigation.classList.remove('navigation-scrolled');
+    }
+}
+
 
 onMounted(() => {
-    const navigation = document.getElementsByClassName('navigation')[0];
 
-    function scroll() {
-        if (window.scrollY > 0) {
-            navigation.classList.add('navigation-scrolled');
-        } else {
-            navigation.classList.remove('navigation-scrolled');
-        }
-    }
+    navigation = document.getElementsByClassName('navigation')[0];
 
     window.addEventListener('scroll', scroll);
+});
+
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', scroll);
+    // 移除事件监听
 });
 
 </script>
@@ -55,7 +64,7 @@ onMounted(() => {
 
 }
 
-.navigation-scrolled{
+.navigation-scrolled {
     background-color: rgba(37, 37, 48, 0.8);
     box-shadow: 0 0 5px;
 }
