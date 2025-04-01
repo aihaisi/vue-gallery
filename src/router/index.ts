@@ -1,10 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Main from '../pages/main.vue'
-import Content from '@/pages/content.vue'
-import GirlsBand from '@/pages/girlsband.vue'
-import Person from '@/pages/person.vue'
-import East from '@/pages/east.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -15,28 +11,32 @@ const router = createRouter({
         },
         {
             path: '/main',
-            component: Main
+            component: () => import('../pages/main.vue')
         },
         {
             path: '/content',
-            component: Content
+            component: () => import('../pages/content.vue')
         },
         {
             path: '/girlsband',
-            component: GirlsBand
+            component: () => import('../pages/girlsband.vue')
         },
         {
             path: '/person',
-            component: Person
+            component: () => import('../pages/person.vue')
         },
         {
             name: 'east',
             path: '/east',
-            component: East
+            component: () => import('../pages/east.vue')
         },
         {
-            path: '/main',
-            component: Main
+            path: '/diancipao',
+            component: () => import('../pages/diancipao.vue')
+        },
+        {
+            path: '/pixivanime',
+            component: () => import('../pages/pixivanime.vue')
         }
     ]
 })

@@ -3,10 +3,14 @@
     <head>
         <title>Picture</title>
     </head>
-        <ShowGallery :imgsPath="img"/>
+
     <body>
-            
+        <el-button>Hello</el-button>
+        <div class="outer">
+        <ShowGallery :imgsPath="img"/>
+        </div>
     </body>
+
 </template>
 <script lang='ts' setup>
 import ShowGallery from '@/components/ShowGallery.vue'

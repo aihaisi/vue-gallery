@@ -21,10 +21,14 @@
 * {
     color: aliceblue;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 body div{
     top:0 ;
     left:0 ;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0.25turn, rgb(21, 19, 31), #9e4be2, #350fa9,rgb(21, 19, 31));
 }
 h1 {
     font-size: 40px;

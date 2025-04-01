@@ -3,9 +3,9 @@
     <head>
         <title>Picture</title>
     </head>
-        <ShowGallery :imgsPath="img"/>
+      
     <body>
-            
+        <ShowGallery :imgsPath="img"/>
     </body>
 </template>
 <script lang='ts' setup>

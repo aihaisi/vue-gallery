@@ -2,18 +2,32 @@
     <div class="navigation">
         <RouterLink to="/main" active-class="link-active">主要</RouterLink>
         <RouterLink to="/person" active-class="link-active">个人</RouterLink>
-        <RouterLink to="/content" active-class="link-active">讨论</RouterLink>
         <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
+        <RouterLink v-if="isShow" to="/content" active-class="link-active">白</RouterLink>
+        <RouterLink v-if="isShow" to="/diancipao" active-class="link-active">电磁炮</RouterLink>
+        <RouterLink v-if="isShow" to="/pixivanime" active-class="link-active">Pixiv</RouterLink>
+        <button id="menu-button" @click="isShow = !isShow"><span>打开菜单</span><svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 10a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1-.75-.75ZM1.75 7a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H1.75Z"></path></svg></button>
     </div>
+
+
 </template>
 
 <script setup lang="ts" name="Person">
 import { RouterLink, useRouter } from 'vue-router';
 import { onMounted, onUnmounted ,watch } from 'vue';
+import { ref } from 'vue';
 
 const router = useRouter();
 var navigation: Element;
+
+function toPage() {
+    router.push({
+        path:"/girlsband",
+
+    }
+    )
+}
 
 function scroll() {
     if (window.scrollY > 0) {
@@ -23,6 +37,7 @@ function scroll() {
     }
 }
 
+let isShow = ref(false);
 
 onMounted(() => {
 
@@ -52,7 +67,7 @@ onUnmounted(() => {
     left: 0;
     background-color: rgb(21, 19, 31);
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 5px;
     padding-left: 20px;
@@ -94,8 +109,16 @@ onUnmounted(() => {
     color: #ffffff;
     background-color: #3e63dd;
 }
+#menu-button {
+    position: fixed;
+    right:0px;
+    scale:50%;
+    /* width:20px;
+    height:20px; */
+}
 
 .router-view {
     flex: auto;
 }
+
 </style>

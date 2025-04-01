@@ -18,6 +18,11 @@
 <script lang="ts" setup>
    import { ref , reactive, watch, computed } from 'vue'
 
+   let promise = new Promise(function(resolve, reject) {
+  // executor（生产者代码，“歌手”）
+});
+console.log(promise);
+
     
     let buttonIsshowAge = ref("显示年龄")
     let msg = ref('Hello Vue')

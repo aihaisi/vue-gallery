@@ -3,39 +3,76 @@
     <head>
         <title>个人相册</title>
     </head>
+    
+    <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="isShowBigImg = false"
+    :zoomScale="1.3" class="light-box"/>
 
-    <body>
+    <body id="show">
         <hr>
-
-      <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="isShowBigImg = false"/>
-
-        <div class="img-container">
+        <div id="arrowTop" v-show="isShowBackToTop" @click="backToTop">返回顶部</div>
+        <div class="img-container" id="container">
             <div v-for="(pic, index) in imgsPath" :key="index" class="img-div">
                 <img :src="pic" class="img-small" @click="showBigImg(index)" alt="单击图片查看大图" />
             </div>
         </div>
-
     </body>
+
 </template>
 <script lang='ts' setup>
-import {ref} from 'vue'
+import { onMounted, onUnmounted ,ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
-const props = defineProps(["imgsPath"])
 
-const imgsPath = props.imgsPath
+const { imgsPath, isSorted } = defineProps(
+    {
+        imgsPath: { type: Array<string>, required: true },
+        isSorted: { type: Boolean, default: true }
+    }
+)
 
-imgsPath.sort(function () {
-    return (Math.random() - 0.5)
-})
+if (isSorted) {
+    imgsPath.sort(function () {
+        return (Math.random() - 0.5)
+    })
+}
 
 let isShowBigImg = ref(false)
 let targetIndex = ref()
 
-function showBigImg(index:number) {
+function showBigImg(index: number) {
     isShowBigImg.value = true
     targetIndex.value = index
 }
+
+
+function backToTop() {
+    window.scrollTo({ top: pageXOffset, left: pageYOffset, behavior:'smooth' });
+    // after scrollTo, there will be a "scroll" event, so the arrow will hide automatically
+};
+
+let isShowBackToTop = ref(false)
+
+
+function showBackToTop() {
+    if (window.scrollY > document.documentElement.clientHeight) {
+        isShowBackToTop.value = true
+    }
+    else {
+        isShowBackToTop.value = false
+    };
+}
+
+var show: any = ref(null);
+
+onMounted(() => {
+    window.addEventListener('scroll', showBackToTop);
+});
+
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', showBackToTop);
+})
+
 
 </script>
 
@@ -47,6 +84,10 @@ function showBigImg(index:number) {
 body {
     text-align: center;
     margin: 0px;
+    /* display: flex;
+    flex-wrap: wrap; */
+    overflow: visible;
+    width: 100%;
 }
 
 .img-container {
@@ -68,20 +109,54 @@ body {
 }
 
 .img-div {
-    margin: 10px;
+    margin: 0 auto;
     /* border: 0px solid #8397a0; */
-    display: flex;
     border-radius: 10px;
-    max-width: 45%;
-    box-shadow: -5px 5px 5px 2px rgba(0, 0, 0, 0.5);
-    
+    max-width: 45vw;
+    overflow: visible;
+
 }
 
 .img-small {
     max-height: 384px;
+    /* max-width: 125%; */
     border: 0;
     border-radius: 10px;
-  
+    box-shadow: -5px 5px 5px 2px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+
 }
 
+.img-small:hover {
+    cursor: pointer;
+    scale: 1.2;
+
+}
+
+#arrowTop {
+    display: flex;
+    color: black;
+    font-size: 16px;
+    position: fixed;
+    padding: 4px;
+    border-radius: 10px;
+    top: 50px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 5;
+    background-color: aliceblue;
+    box-shadow: 0 0 5px;
+    transition: all 0.3s ease;
+
+}
+
+/* #arrowTop::before {
+    content: '▲';
+    height:36px;
+    width:40px;
+} */
+
+/* .light-box {
+    z-index: 100;
+}  */
 </style>

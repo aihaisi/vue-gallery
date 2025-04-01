@@ -17,7 +17,6 @@ import { ref } from 'vue';
     <RouterView/>
     
   </div>
-  <Dog/>
 </template>
 
 <style scoped> 
@@ -30,9 +29,11 @@ import { ref } from 'vue';
     /* flex-direction: row;
     align-items: center;
     justify-content: center; */
-    min-height: 100vh;
-    padding: 2rem;
+    top: 40px;
+    min-height: 50vh;
+    padding: 0;
   }
+
 
 
 /* header {
