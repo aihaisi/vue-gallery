@@ -1,9 +1,13 @@
 <template>
-    <div>
-      <img v-for="(img,index) in dogList" :key=index :src="img" alt="Dog Image" />
+
+  <el-button round type="primary" @click="getDog">Get Dog</el-button>
+
+  
+  <div>
+    <img v-for="(img, index) in dogList" :key=index :src="img" alt="Dog Image" />
     <br>
-    <button @click="getDog">Get Dog</button>
-    </div>
+
+  </div>
 </template>
 
 <script lang="ts" setup name='Dog'>
@@ -17,12 +21,13 @@ const { dogList, getDog } = useDog();
 
 
 <style scoped>
-div{
+div {
   margin: 10px;
   padding: 10px;
 }
+
 img {
-    height:200px;
-    margin:10px;
+  height: 200px;
+  margin: 10px;
 }
 </style>

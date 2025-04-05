@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 import Person from './components/Navigation.vue';
 import Dog from './components/Dog.vue';
-import TheWelcome from './components/TheWelcome.vue'
 import Navigation from './components/Navigation.vue';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
@@ -25,7 +23,7 @@ import { ref } from 'vue';
   }
   .app {
     position: relative;
-    display: flex;
+    /* display: flex; */
     /* flex-direction: row;
     align-items: center;
     justify-content: center; */

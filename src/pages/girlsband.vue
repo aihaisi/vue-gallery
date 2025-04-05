@@ -5,7 +5,6 @@
     </head>
 
     <body>
-        <el-button>Hello</el-button>
         <div class="outer">
         <ShowGallery :imgsPath="img"/>
         </div>
