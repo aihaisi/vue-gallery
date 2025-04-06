@@ -6,7 +6,7 @@
 
     <body>
         <div id="main">
-        <h1>Welcome to My Vue.js Project!</h1>
+        <h1>Welcome to Vue Gallery!</h1>
         <h1>Hello</h1>
         </div>
 
