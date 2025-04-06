@@ -4,9 +4,9 @@
         <RouterLink to="/person" active-class="link-active">个人</RouterLink>
         <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
-        <RouterLink v-if="isShow" to="/content" active-class="link-active">白</RouterLink>
-        <RouterLink v-if="isShow" to="/diancipao" active-class="link-active">电磁炮</RouterLink>
-        <RouterLink v-if="isShow" to="/pixivanime" active-class="link-active">Pixiv</RouterLink>
+        <RouterLink v-if="isShow" to="/content" active-class="link-active">Room1</RouterLink>
+        <RouterLink v-if="isShow" to="/diancipao" active-class="link-active">Room2</RouterLink>
+        <RouterLink v-if="isShow" to="/pixivanime" active-class="link-active">Room3</RouterLink>
         <button id="menu-button" @click="isShow = !isShow"><span>打开菜单</span><svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 10a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1-.75-.75ZM1.75 7a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5H1.75Z"></path></svg></button>
     </div>
 
