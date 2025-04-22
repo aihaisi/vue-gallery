@@ -28,8 +28,8 @@ import { ref } from 'vue';
     align-items: center;
     justify-content: center; */
     top: 40px;
+    min-width: 100%;
     min-height: 50vh;
-    padding: 0;
   }
 
 

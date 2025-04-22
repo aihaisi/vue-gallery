@@ -1,6 +1,7 @@
 import { ref, onBeforeMount, computed } from 'vue'
 import { defineStore } from 'pinia'
 
+import emitter from '@/tools/emitter'
 
 
 export const usePixivPicStore = defineStore('pixivPic', () => {
@@ -12,18 +13,18 @@ export const usePixivPicStore = defineStore('pixivPic', () => {
 
     function showBigImg(bigImg: string) {
         isShowBigImg.value = true
-        targetBigImg.value = bigImg
+        targetBigImg.value = bigImg 
         
 
     }
 
 
-    function sortImg() {
+    function randomSortImg() {
         img.sort(function () {
             return (Math.random() - 0.5)
         }
         )
     }
-    return { img, isShowBigImg, targetBigImg, showBigImg, sortImg }
+    return { img, isShowBigImg, targetBigImg, showBigImg, randomSortImg }
 }
 )

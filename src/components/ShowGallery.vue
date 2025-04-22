@@ -4,7 +4,7 @@
         <title>个人相册</title>
     </head>
     
-    <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="isShowBigImg = false"
+    <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="hideBigImg()"
     :zoomScale="1.3" class="light-box"/>
 
     <body id="show">
@@ -19,18 +19,20 @@
 
 </template>
 <script lang='ts' setup>
-import { onMounted, onUnmounted ,ref } from 'vue'
+import { onMounted, onUnmounted ,ref, type Ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
+import emitter from '@/tools/emitter'
+import { isRandomSortPic } from '@/tools/emitter'
 
 
-const { imgsPath, isSorted } = defineProps(
+const { imgsPath } = defineProps(
     {
         imgsPath: { type: Array<string>, required: true },
-        isSorted: { type: Boolean, default: true }
     }
 )
 
-if (isSorted) {
+// 判断是否需要随机排序
+if (isRandomSortPic.value) {
     imgsPath.sort(function () {
         return (Math.random() - 0.5)
     })
@@ -39,11 +41,24 @@ if (isSorted) {
 let isShowBigImg = ref(false)
 let targetIndex = ref()
 
+function overflowHidden() {
+   
+}
+
+function overflowVisible() {
+
+}
+
 function showBigImg(index: number) {
     isShowBigImg.value = true
     targetIndex.value = index
+    overflowHidden()
 }
 
+function hideBigImg() {
+    isShowBigImg.value = false
+    overflowVisible()
+}
 
 function backToTop() {
     window.scrollTo({ top: pageXOffset, left: pageYOffset, behavior:'smooth' });
@@ -87,6 +102,8 @@ body {
     /* display: flex;
     flex-wrap: wrap; */
     overflow: visible;
+    overflow-x: hidden;
+    min-width: 100%;
     width: 100%;
 }
 

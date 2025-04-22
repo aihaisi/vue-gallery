@@ -5,7 +5,7 @@
     </head>
       
     <body>
-        <ShowGallery :imgsPath="img" :isSorted="false"/>
+        <ShowGallery :imgsPath="img"/>
     </body>
 </template>
 <script lang='ts' setup>
