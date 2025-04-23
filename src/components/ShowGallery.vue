@@ -41,23 +41,13 @@ if (isRandomSortPic.value) {
 let isShowBigImg = ref(false)
 let targetIndex = ref()
 
-function overflowHidden() {
-   
-}
-
-function overflowVisible() {
-
-}
-
 function showBigImg(index: number) {
     isShowBigImg.value = true
     targetIndex.value = index
-    overflowHidden()
 }
 
 function hideBigImg() {
     isShowBigImg.value = false
-    overflowVisible()
 }
 
 function backToTop() {
@@ -130,8 +120,6 @@ body {
     /* border: 0px solid #8397a0; */
     border-radius: 10px;
     max-width: 45vw;
-    overflow: visible;
-
 }
 
 .img-small {

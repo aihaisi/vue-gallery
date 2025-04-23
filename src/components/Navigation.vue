@@ -4,9 +4,9 @@
         <RouterLink to="/person" active-class="link-active">个人</RouterLink>
         <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
-        <RouterLink to="/content" active-class="link-active">Room1</RouterLink>
-        <RouterLink to="/diancipao" active-class="link-active">Room2</RouterLink>
-        <RouterLink to="/pixivanime" active-class="link-active">Room3</RouterLink>
+        <RouterLink v-if="isShowMorePic" to="/content" active-class="link-active">Room1</RouterLink>
+        <RouterLink v-if="isShowMorePic" to="/diancipao" active-class="link-active">Room2</RouterLink>
+        <RouterLink v-if="isShowMorePic" to="/pixivanime" active-class="link-active">Room3</RouterLink>
         <button id="menu-button" @click=clickMenu()><span></span><svg fill="none" viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor"
@@ -15,15 +15,17 @@
             </svg></button>
     </div>
 
-    <div v-if="isSettingsOpen" class="settings-panel">
+    <div :class="['settings-panel',{open: isSettingsOpen}]">
         <div class="settings-header">
             <h1>设置</h1>
         </div>
-        
+
         <div class="settings-content">
             <ui>
-                <li>图片随机打乱<el-button id="li-one" round type="info" @click="changeIsRandomSortPic()" style="right: 70px; position: absolute"> 打开 </el-button></li>
-                <li>设置2</li>
+                <li>图片随机打乱<el-button id="li-one" round :type="liOneType" @click="changeIsRandomSortPic()"
+                        style="right: 70px; position: absolute"> 打开 </el-button></li>
+                <li>显示额外图表<el-button id="li-two" round :type="liTwoType" @click="changeIsShowMorePic()"
+                        style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>设置3</li>
                 <li>设置4</li>
             </ui>
@@ -64,12 +66,11 @@ function scroll() {
     }
 }
 
-let isShow = ref(false);
+//点击菜单按钮触发的事件
+
 let isSettingsOpen = ref(false);
 
-//点击菜单按钮触发的事件
 function clickMenu() {
-    isShow.value = !isShow.value;
     isSettingsOpen.value = true;
 }
 
@@ -77,13 +78,31 @@ function closeSettings() {
     isSettingsOpen.value = false;
 }
 
+// 用于控制lione的type属性以改变样式
+let liOneType = ref(isRandomSortPic.value ? "info" : "primary")
+
 function changeIsRandomSortPic() {
     emitter.emit('changeIsRandomSortPic');
     let li = document.getElementById('li-one')
     if (li) {
         li.innerText = isRandomSortPic.value ? "关闭" : "打开"
+        liOneType.value = isRandomSortPic.value ? "info" : "primary"
     }
 }
+
+//用于控制litwo的type属性以改变样式
+let isShowMorePic = ref(false)
+let liTwoType = ref(isShowMorePic.value ? "info" : "primary")
+function changeIsShowMorePic() {
+    let li = document.getElementById('li-two')
+    isShowMorePic.value = !isShowMorePic.value
+    if (li) {
+        li.innerText = isShowMorePic.value ? "关闭" : "打开"
+        liTwoType.value = isShowMorePic.value ? "info" : "primary"
+    }
+}
+
+///////////////
 
 onMounted(() => {
 
@@ -167,13 +186,17 @@ onUnmounted(() => {
 .settings-panel {
     position: fixed;
     top: 0;
-    right: 0;
+    right: -30%;
     width: 30%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.805);
+    background-color: rgba(28, 28, 28, 0.805);
     color: white;
     z-index: 200;
     transition: all 0.3s ease;
+}
+
+.settings-panel.open{
+    right: 0;
 }
 
 .settings-header {
@@ -212,7 +235,8 @@ onUnmounted(() => {
     font-size: 20px;
 }
 
-.settings-content ul ,.settings-content li{
+.settings-content ul,
+.settings-content li {
     list-style-type: none;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0);
