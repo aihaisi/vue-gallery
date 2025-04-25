@@ -197,6 +197,7 @@ onUnmounted(() => {
 
 .settings-panel.open{
     right: 0;
+    box-shadow: #575657 0px 0px 10px;
 }
 
 .settings-header {
