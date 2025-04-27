@@ -4,7 +4,7 @@
         <title>个人相册</title>
     </head>
 
-    <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="hideBigImg()" :zoomScale="1.3"
+    <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="hideBigImg()" :zoomScale="1.1"
         class="light-box" />
 
     <body id="show">
