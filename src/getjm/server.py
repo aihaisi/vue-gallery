@@ -26,14 +26,14 @@ def run_script():
         if not os.access(script_path, os.X_OK):
             os.chmod(script_path, 0o755)
         result = subprocess.run(
-            ['python', script_path, str(input_number)],
-            check=True,
-            stdout=subprocess.PIPE,  # 捕获标准输出
-            stderr=subprocess.PIPE,  # 捕获错误输出
-            text=True
+            ['python', script_path, str(input_number)]
+            # check=True,
+            # stdout=subprocess.PIPE,  # 捕获标准输出
+            # stderr=subprocess.PIPE,  # 捕获错误输出
+            # text=True
             )
-        print("STDOUT:", result.stdout)
-        print("STDERR:", result.stderr)
+        # print("STDOUT:", result.stdout)
+        # print("STDERR:", result.stderr)
         return 'Script executed successfully', 200
     except subprocess.CalledProcessError as e:
         return f"Script failed: {e.stderr}", 500
