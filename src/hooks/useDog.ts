@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 import axios from 'axios'
 
-export default function(){
+export function useDog(){
     let link = "https://dog.ceo/api/breeds/image/random"
 
     let dogList = reactive<string[]> ([

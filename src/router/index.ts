@@ -21,10 +21,10 @@ const router = createRouter({
             path: '/girlsband',
             component: () => import('../pages/girlsband.vue')
         },
-        {
-            path: '/person',
-            component: () => import('../pages/person.vue')
-        },
+        // {
+        //     path: '/person',
+        //     component: () => import('../pages/person.vue')
+        // },
         {
             name: 'east',
             path: '/east',
@@ -37,6 +37,10 @@ const router = createRouter({
         {
             path: '/pixivanime',
             component: () => import('../pages/pixivanime.vue')
+        },
+        {
+            path: '/test',
+            component: () => import('../pages/test.vue')
         }
     ]
 })

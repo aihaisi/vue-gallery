@@ -1,7 +1,7 @@
 <template>
     <div class="navigation">
-        <RouterLink to="/main" active-class="link-active">主要</RouterLink>
-        <RouterLink to="/person" active-class="link-active">个人</RouterLink>
+        <RouterLink to="/main" active-class="link-active">主页</RouterLink>
+        <!-- <RouterLink to="/person" active-class="link-active">个人</RouterLink> -->
         <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
         <RouterLink v-if="isShowMorePic" to="/content" active-class="link-active">Room1</RouterLink>
@@ -26,7 +26,8 @@
                         style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>显示额外图表<el-button id="li-two" round :type="liTwoType" @click="changeIsShowMorePic()"
                         style="right: 70px; position: absolute"> 打开 </el-button></li>
-                <li>设置3</li>
+                <li>打开测试页面<el-button id="li-three" round type="primary" @click="openTestPage()"
+                    style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>设置4</li>
             </ui>
         </div>
@@ -100,6 +101,12 @@ function changeIsShowMorePic() {
         li.innerText = isShowMorePic.value ? "关闭" : "打开"
         liTwoType.value = isShowMorePic.value ? "info" : "primary"
     }
+}
+
+function openTestPage() {
+    router.push({
+        path: "/test",
+    })
 }
 
 ///////////////

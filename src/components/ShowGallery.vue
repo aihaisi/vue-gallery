@@ -18,7 +18,7 @@
     <el-backtop :right="60" :bottom="60" type="primary" style="color: purple;background-color: whitesmoke;" />
 </template>
 <script lang='ts' setup>
-import { onMounted, onUnmounted, ref, type Ref } from 'vue'
+import { onMounted, onUnmounted, onUpdated, ref, type Ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import emitter from '@/tools/emitter'
 import { isRandomSortPic } from '@/tools/emitter'
