@@ -1,3 +1,3 @@
-git+https://github.com/hect0x7/JMComic-Crawler-Python
-flask 
+flask
 flask_cors
+jmcomic

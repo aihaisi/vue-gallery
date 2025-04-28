@@ -9,12 +9,13 @@ def main():
         return 1
 
     input_number = sys.argv[1]
+    
     print(f"Received number: {input_number}")
     
     current_dir = os.path.dirname(os.path.abspath(__file__))
-
-    option = jmcomic.create_option_by_file(f"{current_dir}/option.yml")
-
+    
+    option = jmcomic.JmOption.default()
+    
     option.dir_rule.base_dir = current_dir + '/out'
 
     jmcomic.download_album(input_number, option)
