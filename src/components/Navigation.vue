@@ -1,7 +1,6 @@
 <template>
     <div class="navigation">
-        <RouterLink to="/main" active-class="link-active">主要</RouterLink>
-        <RouterLink to="/person" active-class="link-active">个人</RouterLink>
+        <RouterLink to="/main" active-class="link-active">主页</RouterLink>
         <RouterLink to="/girlsband" active-class="link-active">乐队</RouterLink>
         <RouterLink :to="{ name: 'east' }" active-class="link-active">东方</RouterLink>
         <RouterLink v-if="isShowMorePic" to="/content" active-class="link-active">Room1</RouterLink>

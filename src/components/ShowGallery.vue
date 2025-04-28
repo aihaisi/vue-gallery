@@ -63,6 +63,7 @@ body {
     flex-wrap: wrap; */
     overflow: visible;
     overflow-x: hidden;
+    overflow-y: hidden;
     min-width: 100%;
     width: 100%;
 }

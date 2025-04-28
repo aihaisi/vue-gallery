@@ -22,10 +22,6 @@ const router = createRouter({
             component: () => import('../pages/girlsband.vue')
         },
         {
-            path: '/person',
-            component: () => import('../pages/person.vue')
-        },
-        {
             name: 'east',
             path: '/east',
             component: () => import('../pages/east.vue')
