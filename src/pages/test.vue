@@ -52,7 +52,7 @@ const fetchJMComic = async () => {
     }
 }
 
-const images = import.meta.glob("@/getjm/out/*/*")
+const images = import.meta.glob("@/getjm/out/**")
 const img: string[] = Object.keys(images)
 
 
