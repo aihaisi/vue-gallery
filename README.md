@@ -34,10 +34,8 @@ npm run build
 
 
 ## Use Flask as a Backend Server always need requirements
-### quick start
-run `py_requirement_install.bat` to install
 
-### or manually use pip to install
+### manually use pip to install
 ```sh
 pip install -r requirements.txt
 ```
