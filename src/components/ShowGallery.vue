@@ -17,7 +17,7 @@
       
         </div>
         <VueEasyLightbox :imgs="imgsPath" :visible="isShowBigImg" :index="targetIndex" @hide="hideBigImg()"
-        :zoomScale="1.1" class="light-box" :scrollDisabled="true" />
+        :zoomScale="1.05" class="light-box" :scrollDisabled="true" />
     </body>
     <el-backtop :right="60" :bottom="60" type="primary" style="color: purple;background-color: whitesmoke;" />
 </template>
@@ -26,13 +26,17 @@ import { ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import { isRandomSortPic } from '@/tools/emitter'
 
-const { imgsPath } = defineProps(
+const { imgsPath , isRandomSortPicForThis} = defineProps(
     {
         imgsPath: { type: Array<string>, required: true },
+        isRandomSortPicForThis: { type: Boolean, default: false }
     }
 )
 
-// 判断是否需要随机排序
+if (isRandomSortPicForThis){
+    isRandomSortPic.value = isRandomSortPicForThis
+}
+
 if (isRandomSortPic.value) {
     imgsPath.sort(function () {
         return (Math.random() - 0.5)

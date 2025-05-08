@@ -7,6 +7,8 @@
         <RouterLink v-if="isShowMorePic" to="/content" active-class="link-active">Room1</RouterLink>
         <RouterLink v-if="isShowMorePic" to="/diancipao" active-class="link-active">Room2</RouterLink>
         <RouterLink v-if="isShowMorePic" to="/pixivanime" active-class="link-active">Room3</RouterLink>
+        <RouterLink v-if="isShowMorePic" to="/roomfour" active-class="link-active">Room4</RouterLink>
+
         <button id="menu-button" @click=clickMenu()><span></span><svg fill="none" viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill="currentColor"
