@@ -42,7 +42,7 @@ const fetchJMComic = async (): Promise<void> => {
         )
         data.value = response.data;
     } catch (error) {
-        console.error('Failed to fetch artwork:', error);
+        alert(`需要启动后端程序！\nFailed to fetch artwork:' ${error}`);
     }
 }
 
