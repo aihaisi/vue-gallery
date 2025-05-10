@@ -17,7 +17,7 @@
             </svg></button>
     </div>
 
-    <div :class="['settings-panel',{open: isSettingsOpen}]">
+    <div :class="['settings-panel', { open: isSettingsOpen }]">
         <div class="settings-header">
             <h1>设置</h1>
         </div>
@@ -28,8 +28,10 @@
                         style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>显示额外图表<el-button id="li-two" round :type="liTwoType" @click="changeIsShowMorePic()"
                         style="right: 70px; position: absolute"> 打开 </el-button></li>
+                <li>从JM获取漫画<el-button id="li-four" round type="primary" @click="toFetchJMPage()"
+                        style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>打开测试页面<el-button id="li-three" round type="primary" @click="openTestPage()"
-                    style="right: 70px; position: absolute"> 打开 </el-button></li>
+                        style="right: 70px; position: absolute"> 打开 </el-button></li>
                 <li>设置4</li>
             </ui>
         </div>
@@ -111,6 +113,11 @@ function openTestPage() {
     })
 }
 
+function toFetchJMPage() {
+    router.push({
+        path: "/fetchjm",
+    })
+}
 ///////////////
 
 onMounted(() => {
@@ -118,6 +125,8 @@ onMounted(() => {
     navigation = document.getElementsByClassName('navigation')[0];
 
     window.addEventListener('scroll', scroll);
+
+    // 监听导航滚动
 });
 
 
@@ -204,7 +213,7 @@ onUnmounted(() => {
     transition: all 0.3s ease;
 }
 
-.settings-panel.open{
+.settings-panel.open {
     right: 0;
     box-shadow: #575657 0px 0px 10px;
 }

@@ -21,10 +21,6 @@ const router = createRouter({
             path: '/girlsband',
             component: () => import('../pages/girlsband.vue')
         },
-        // {
-        //     path: '/person',
-        //     component: () => import('../pages/person.vue')
-        // },
         {
             name: 'east',
             path: '/east',
@@ -45,6 +41,10 @@ const router = createRouter({
         {
             path: '/roomfour',
             component: () => import('../pages/roomfour.vue')
+        },
+        {
+            path: '/fetchjm',
+            component: () => import('../pages/fetchjm.vue')
         }
     ]
 })
