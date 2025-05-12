@@ -1,4 +1,4 @@
-# VueGallery
+# vue-gallery
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -31,3 +31,12 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+## Use Flask as a Backend Server always need requirements
+
+### manually use pip to install
+```sh
+pip install -r requirements.txt
+```
+

@@ -33,4 +33,5 @@ src/store/*
 !src/store/picivPic
 !src/store/picivPic.ts
 !src/store/img
-out
+
+src/getjm/out/*

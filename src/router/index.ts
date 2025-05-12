@@ -33,6 +33,18 @@ const router = createRouter({
         {
             path: '/pixivanime',
             component: () => import('../pages/pixivanime.vue')
+        },
+        {
+            path: '/test',
+            component: () => import('../pages/test.vue')
+        },
+        {
+            path: '/roomfour',
+            component: () => import('../pages/roomfour.vue')
+        },
+        {
+            path: '/fetchjm',
+            component: () => import('../pages/fetchjm.vue')
         }
     ]
 })

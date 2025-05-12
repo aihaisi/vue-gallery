@@ -2,7 +2,7 @@
 
   <el-button round type="primary" @click="getDog">Get Dog</el-button>
 
-  
+
   <div>
     <img v-for="(img, index) in dogList" :key=index :src="img" alt="Dog Image" />
     <br>
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup name='Dog'>
-import useDog from '@/hooks/useDog';
+import { useDog } from '@/hooks/useDog';
 
 const { dogList, getDog } = useDog();
 
