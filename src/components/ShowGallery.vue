@@ -5,7 +5,6 @@
     </head>
 
 
-
     <body id="show">
         <hr>
         
@@ -25,6 +24,7 @@
 import { ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 import { isRandomSortPic } from '@/tools/emitter'
+
 
 const { imgsPath , isRandomSortPicForThis} = defineProps(
     {
