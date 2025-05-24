@@ -18,8 +18,7 @@ start http://localhost:%PORT%
 
 :: 启动后端服务
 echo Staring Flask backend server...
-cd src
-cd getjm
+cd src/backend/getjm
 start cmd /k "python server.py"
 
 endlocal

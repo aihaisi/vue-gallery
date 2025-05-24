@@ -46,7 +46,7 @@ const fetchJMComic = async (): Promise<void> => {
     }
 }
 
-const images = import.meta.glob("@/getjm/out/**")
+const images = import.meta.glob("@/backend/getjm/out/**")
 const allImg: string[] = Object.keys(images)
 
 interface FolderMap {
@@ -56,9 +56,10 @@ interface FolderMap {
 const folderMap: FolderMap = {};
 
 Object.entries((images as object)).forEach(([path, module]) => {
-    // 提取文件夹名（如 'cats'）
+    // path string : /src/---
+    // such as: /src/backend/getjm/out/1/1.jpg
     const folderPath = path.split('/').slice(4)
-    const folderName = folderPath[0]; // 根据路径结构调整索引
+    const folderName = folderPath[1]; // 根据路径结构调整索引
     if (!folderMap[folderName]) {
         folderMap[folderName] = [];
     }
