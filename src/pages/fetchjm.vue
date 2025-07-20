@@ -53,6 +53,7 @@ interface FolderMap {
     [key: string]: any[];
 }
 
+//文件路径树
 const folderMap: FolderMap = {};
 
 Object.entries((images as object)).forEach(([path, module]) => {

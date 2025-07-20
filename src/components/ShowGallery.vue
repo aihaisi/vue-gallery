@@ -61,6 +61,9 @@ function hideBigImg() {
 
 const scrollbarWidth = getScrollbarWidth()
 
+/**
+ * 计算出浏览器滚动条的宽度
+ */
 function getScrollbarWidth(): number {
     // 创建一个临时的 div 元素
     const div = document.createElement('div');
@@ -82,8 +85,11 @@ function getScrollbarWidth(): number {
     return scrollbarWidth;
 }
 
-//在显示大图时，调整容器的margin-right，防止原底层图片布局发生改变
+/**
+ * 获取容器元素，并根据大图是否可见来调整其 margin-right 属性
+ */
 function adjustContainerMarginRight(isBigImgVisible: boolean) {
+
     const container = document.getElementById('container')
     if (container) {
         container.style.marginRight = isBigImgVisible ? scrollbarWidth.toString() + 'px' : '0px' 
@@ -154,7 +160,7 @@ body {
 
 .img-small:hover {
     cursor: pointer;
-    scale: 1.2;
+    scale: 1.5;
 
 }
 </style>
