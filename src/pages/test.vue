@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, Static } from 'vue';
 import axios from 'axios';
 import ShowGallery from '@/components/ShowGallery.vue';
 
@@ -30,23 +30,24 @@ var data = ref(null);
 const inputNumber = ref('')
 
 const fetchJMComic = async (): Promise<void> => {
-    try {
-        const response = await axios.post(
-            'http://localhost:5000/run-script',
-            { number: inputNumber.value },  // 发送JSON数据
-            {
-                headers: {
-                    'Content-Type': 'application/json'  // 明确指定JSON格式
-                }
-            }
-        )
-        data.value = response.data;
-    } catch (error) {
-        console.error('Failed to fetch artwork:', error);
-    }
+    alert("请从设置切换页面")
+    // try {
+    //     const response = await axios.post(
+    //         'http://localhost:5000/run-script',
+    //         { number: inputNumber.value },  // 发送JSON数据
+    //         {
+    //             headers: {
+    //                 'Content-Type': 'application/json'  // 明确指定JSON格式
+    //             }
+    //         }
+    //     )
+    //     data.value = response.data;
+    // } catch (error) {
+    //     console.error('Failed to fetch artwork:', error);
+    // }
 }
 
-const images = import.meta.glob("@/getjm/out/**")
+const images = import.meta.glob("@/store/**")
 const allImg: string[] = Object.keys(images)
 
 interface FolderMap {
@@ -56,8 +57,12 @@ interface FolderMap {
 const folderMap: FolderMap = {};
 
 Object.entries((images as object)).forEach(([path, module]) => {
-    // 提取文件夹名（如 'cats'）
-    const folderPath = path.split('/').slice(4)
+    // path string : /src/store/example/1.jpg
+    const folderPath = path.split('/').slice(3)
+    
+    if (folderPath.length < 2) return
+    if (!folderPath[0]) return
+
     const folderName = folderPath[0]; // 根据路径结构调整索引
     if (!folderMap[folderName]) {
         folderMap[folderName] = [];
